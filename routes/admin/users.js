@@ -53,7 +53,7 @@ router.get('/add', checkAdmin, (req, res) => {
 });
 
 router.post('/add', upload.single('img'), (req, res, next) => {
-    const username = req.body.name;
+    const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
     const password2 = req.body.password2;
