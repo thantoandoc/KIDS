@@ -31,9 +31,9 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-mongoose.connect(mongoDBConfig.getURLDatabase(), { useNewUrlParser: true },  function(err){
-    if(err) {
-        console.log('Some problem with the connection ' +err);
+mongoose.connect(mongoDBConfig.getURLDatabase(), { useNewUrlParser: true }, function(err) {
+    if (err) {
+        console.log('Some problem with the connection ' + err);
     } else {
         console.log('The Mongoose connection is ready');
     }
@@ -45,6 +45,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/anhsanpham', express.static('anhsanpham'));
 //app.use(session({ secret: 'chauminhthien', resave: true, saveUninitialized: true }))
 
 
@@ -114,6 +115,6 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-app.listen(PORT, function () {
+app.listen(PORT, function() {
     console.log(`App listening on PORT: ${PORT}`);
 })
