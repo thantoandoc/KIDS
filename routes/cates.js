@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var Cate = require('../model/Cate.js');
+const Cate = require('../model/Cate.js');
 
 function bodauTiengViet(str) {
     str = str.toLowerCase();
@@ -18,23 +18,23 @@ function bodauTiengViet(str) {
 }
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', checkAdmin, function(req, res, next) {
     res.redirect('/admin/cate/danh-sach.html');
 });
 
-router.get('/danh-sach.html', function(req, res, next) {
+router.get('/danh-sach.html', checkAdmin, function(req, res, next) {
     Cate.find().then(function(data) {
         res.render('admin/cate/danhsach', { data: data });
     });
 
 });
 
-router.get('/them-cate.html', function(req, res, next) {
+router.get('/them-cate.html', checkAdmin, function(req, res, next) {
     res.render('admin/cate/them', { errors: null });
 });
 
 
-router.post('/them-cate.html', function(req, res, next) {
+router.post('/them-cate.html', checkAdmin, function(req, res, next) {
     //res.render('admin/cate/them');
     req.checkBody('name', 'Giá Trị không được rổng').notEmpty();
     req.checkBody('name', 'Name 5 đến 32 ký tự').isLength({ min: 3, max: 32 });
@@ -43,7 +43,7 @@ router.post('/them-cate.html', function(req, res, next) {
         res.render('admin/cate/them', { errors: errors });
     }
 
-    var cate = new Cate({
+    const cate = new Cate({
         name: req.body.name,
         nameKhongDau: bodauTiengViet(req.body.name)
     });
@@ -57,16 +57,16 @@ router.post('/them-cate.html', function(req, res, next) {
 });
 
 
-router.get('/:id/sua-cate.html', function(req, res, next) {
+router.get('/:id/sua-cate.html', checkAdmin, function(req, res, next) {
     Cate.findById(req.params.id, function(err, data) {
         res.render('admin/cate/sua', { errors: null, data: data });
     });
 });
 
-router.post('/:id/sua-cate.html', function(req, res, next) {
+router.post('/:id/sua-cate.html', checkAdmin, function(req, res, next) {
     req.checkBody('name', 'Giá Trị không được rổng').notEmpty();
     req.checkBody('name', 'Name 5 đến 32 ký tự').isLength({ min: 3, max: 32 });
-    var errors = req.validationErrors();
+    const errors = req.validationErrors();
     if (errors) {
         Cate.findById(req.params.id, function(err, data) {
             res.render('admin/cate/sua', { errors: errors, data: data });
@@ -83,7 +83,7 @@ router.post('/:id/sua-cate.html', function(req, res, next) {
 
 });
 
-router.get('/:id/xoa-cate.html', function(req, res, next) {
+router.get('/:id/xoa-cate.html', checkAdmin, function(req, res, next) {
 
     Cate.findById(req.params.id).remove(function() {
         req.flash('success_msg', 'Đã Xoá Thành Công');
@@ -96,7 +96,7 @@ function checkAdmin(req, res, next) {
     if (req.isAuthenticated()) {
         next();
     } else {
-        res.redirect('/admin/dang-nhap.html');
+        res.redirect('/users/login');
     }
 }
 module.exports = router;
