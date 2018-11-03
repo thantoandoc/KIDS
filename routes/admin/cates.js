@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Cate = require('../model/Cate.js');
+const Cate = require('../../model/Cate.js');
 
 function bodauTiengViet(str) {
     str = str.toLowerCase();
@@ -45,7 +45,7 @@ router.post('/them-cate.html', checkAdmin, function(req, res, next) {
 
     const cate = new Cate({
         name: req.body.name,
-        nameKhongDau: bodauTiengViet(req.body.name)
+        namekhongdau: bodauTiengViet(req.body.name)
     });
 
     cate.save().then(function() {

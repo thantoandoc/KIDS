@@ -14,7 +14,7 @@
                     <div class='col-xs-12'>
                         <div class="page-title">
                             <div class="pull-left">
-                                <h1 class="title">Add Category</h1>
+                                <h1 class="title">Sửa Sản Phẩm</h1>
                             </div>
                             <div class="pull-right hidden-xs">
 
@@ -48,17 +48,37 @@
 
                                                 </div>
                                                 <% };%>
-                                                    <form action="" method="post">
+                                                    <form action="" method="post" enctype="multipart/form-data">
                                                         <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
                                                             <div class="form-group">
-                                                                <label class="form-label" for="field-120334">Name</label>
+                                                                <label class="form-label" for="field-120334">UserName</label>
                                                                 <span class="desc"></span>
                                                                 <div class="controls">
-                                                                    <input type="text" id="name" value="" class="form-control" name="name">
+                                                                    <input type="text" id="username" value="<%= data.name%>" class="form-control" name="name">
                                                                 </div>
                                                             </div>
-
                                                         </div>
+                                                        <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
+                                                            <div class="form-group">
+                                                                <label class="form-label" for="field-120334">Hình</label>
+                                                                <span class="desc"></span><br/>
+                                                                <img src="anhsanpham/<%= data.img%>" width="200px">
+                                                                <div class="controls">
+                                                                    <input type="file" id="hinh" value="aaaa" required="required" class="form-control" name="hinh">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
+                                                            <div class="form-group">
+                                                                <label class="form-label" for="field-120334">Giá</label>
+                                                                <span class="desc"></span>
+                                                                <div class="controls">
+                                                                    <input type="number" id="gia" value="<%= product.price%>" min="0" class="form-control" name="gia">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
                                                         <div class="col-xs-12 col-sm-9 col-md-8 padding-bottom-30">
                                                             <div class="text-left">
                                                                 <button type="submit" class="btn btn-primary">Save</button>

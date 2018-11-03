@@ -1,10 +1,10 @@
-        <% include ../playout/header.ejs %>
-        <!-- END TOPBAR -->
-        <!-- START CONTAINER -->
-        <div class="page-container row-fluid container-fluid">
-            <!-- SIDEBAR - START -->
-           
-                 <% include ../playout/menu.ejs %>
+<% include ../playout/header.ejs %>
+    <!-- END TOPBAR -->
+    <!-- START CONTAINER -->
+    <div class="page-container row-fluid container-fluid">
+        <!-- SIDEBAR - START -->
+
+        <% include ../playout/menu.ejs %>
 
 
             <!--  SIDEBAR - END -->
@@ -17,7 +17,7 @@
                                 <h1 class="title">Danh Sách Sản Phẩm</h1>
                             </div>
                             <div class="pull-right hidden-xs">
-                               
+
                             </div>
                         </div>
                     </div>
@@ -34,38 +34,48 @@
                             </header>
                             <div class="content-body">
                                 <div class="row">
-                                    <% if(success_msg != ''){ %> 
-                                        <div class="alert alert-success"><%= success_msg%></div>
-                                   <% } %>
-                                    <div class="col-xs-12">
-                                        <!-- ********************************************** -->
-                                        <table id="example" class="display table table-hover table-condensed">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Name</th>
-                                                    <th>Hình</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <% var id = 0 %>
-                                                <% product.forEach(function(item){ id ++ %>
-                                                <tr>
-                                                    <td><%= id%></td>
-                                                    <td><%= item.name%></td>
-                                                    <td> <img src="upload/<%= item.img%>" width="100px" alt=""></td>
+                                    <% if(success_msg != ''){ %>
+                                        <div class="alert alert-success">
+                                            <%= success_msg%>
+                                        </div>
+                                        <% } %>
+                                            <div class="col-xs-12">
+                                                <!-- ********************************************** -->
+                                                <table id="example" class="display table table-hover table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Name</th>
+                                                            <th>Email</th>
+                                                            <th>Hình</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% var id = 0 %>
+                                                            <% data.forEach(function(item){ id ++ %>
+                                                                <tr>
+                                                                    <td>
+                                                                        <%= id%>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.username%>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= item.email%>
+                                                                    </td>
+                                                                    <td> <img src="anhsanpham/<%= item.img%>" width="100px" alt=""></td>
 
-                                                    <td>
-                                                        <a href="/admin/product/<%= item._id %>/xoa-product.html">Xoá</a> | 
-                                                        <a href="/admin/product/<%= item._id %>/sua-product.html">Sửa</a>
-                                                    </td>
-                                                </tr>
-                                                <%})%>
-                                            </tbody>
-                                        </table>
-                                        <!-- ********************************************** -->
-                                    </div>
+                                                                    <td>
+                                                                        <a href="/admin/product/<%= item._id %>/xoa-product.html">Xoá</a> |
+                                                                        <a href="/admin/product/<%= item._id %>/sua-product.html">Sửa</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <%})%>
+                                                    </tbody>
+                                                </table>
+                                                <!-- ********************************************** -->
+                                            </div>
                                 </div>
                             </div>
                         </section>
@@ -77,8 +87,8 @@
 
             </div>
 
-<% include ../playout/footer.ejs %>
-            <script src="TT_Admin/assets/plugins/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
-            <script src="TT_Admin/assets/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>
-            <script src="TT_Admin/assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
-            <script src="TT_Admin/assets/plugins/datatables/extensions/Responsive/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
+            <% include ../playout/footer.ejs %>
+                <script src="TT_Admin/assets/plugins/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+                <script src="TT_Admin/assets/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>
+                <script src="TT_Admin/assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+                <script src="TT_Admin/assets/plugins/datatables/extensions/Responsive/bootstrap/3/dataTables.bootstrap.js" type="text/javascript"></script>
