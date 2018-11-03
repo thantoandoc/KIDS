@@ -2,10 +2,15 @@ const mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-mongoose.connect('mongodb://localhost/balokids', { useNewUrlParser: true });
-mongoose.set('useCreateIndex', true);
-const db = mongoose.connection;
 
+var mongoDBConfig = require('../config/mongoDB');
+mongoose.connect(mongoDBConfig.getURLDatabase(), { useNewUrlParser: true }, function(err) {
+    if (err) {
+        console.log('Some problem with the connection ' + err);
+    } else {
+        console.log('The Mongoose connection is ready');
+    }
+});
 
 //UserSchema
 

@@ -71,7 +71,6 @@ app.use(session({
     resave: true,
     key: 'user',
     saveUninitialized: true
-
 }));
 
 app.use(passport.initialize());
