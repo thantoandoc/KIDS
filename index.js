@@ -21,9 +21,9 @@ var PORT = process.env.PORT || 3000;
  * include router
  */
 var index = require('./routes/index');
-var admin = require('./routes/admin');
-var users = require('./routes/users');
-var cate = require('./routes/cates');
+var admin = require('./routes/admin/admin');
+var users = require('./routes/admin/users');
+var cate = require('./routes/admin/cates');
 const videoRouter = require('./routes/admin/video');
 
 var app = express();
@@ -93,7 +93,6 @@ app.use('/users', users);
 app.use('/admin', admin);
 app.use('/admin/cate', cate);
 app.use('/admin/video', videoRouter);
-
 
 
 // catch 404 and forward to error handler

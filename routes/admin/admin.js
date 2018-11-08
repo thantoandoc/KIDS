@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../model/user');
+const User = require('../../model/admin');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const multer = require('multer');
@@ -20,7 +20,7 @@ function checkAdmin(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.redirect('users/login');
+    res.redirect('admin/login');
 }
 
 router.get('/', checkAdmin, (req, res) => {
@@ -33,8 +33,8 @@ router.get('/login', function(req, res, next) {
 
 
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/users',
-    failureRedirect: '/users/login',
+    successRedirect: '/admin',
+    failureRedirect: '/admin/login',
     failureFlash: true
 }), (req, res, next) => {
     req.flash('You are now logged in');
@@ -116,14 +116,14 @@ router.post('/register', upload.single('img'), (req, res, next) => {
 
         req.flash('success', 'You are now registered and can login');
 
-        res.location('/users/login');
-        res.redirect('/users/login');
+        res.location('/admin/login');
+        res.redirect('/admin/login');
     }
 });
 router.get('/logout', (req, res) => {
     req.logout();
     req.flash('success', 'you are now logout');
-    res.redirect('/users/login');
+    res.redirect('/admin/login');
 });
 
 router.get('/getuser', checkAdmin, (req, res) => {
@@ -131,5 +131,6 @@ router.get('/getuser', checkAdmin, (req, res) => {
         res.render('admin/login/list', { data: data });
     });
 });
+
 
 module.exports = router;
