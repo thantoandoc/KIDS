@@ -4,6 +4,16 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 var mongoDBConfig = require('../config/mongoDB');
+<<<<<<< HEAD
+=======
+mongoose.connect(mongoDBConfig.getURLDatabase(), { useNewUrlParser: true, useCreateIndex :true }, function(err) {
+    if (err) {
+        console.log('Some problem with the connection ' + err);
+    } else {
+        console.log('The Mongoose connection is ready');
+    }
+});
+>>>>>>> 5a9623405f74e841ce0df7af86a34871d95a2419
 
 //UserSchema
 
