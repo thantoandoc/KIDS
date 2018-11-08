@@ -4,7 +4,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 var mongoDBConfig = require('../config/mongoDB');
-mongoose.connect(mongoDBConfig.getURLDatabase(), { useNewUrlParser: true }, function(err) {
+mongoose.connect(mongoDBConfig.getURLDatabase(), { useNewUrlParser: true, useCreateIndex :true }, function(err) {
     if (err) {
         console.log('Some problem with the connection ' + err);
     } else {
