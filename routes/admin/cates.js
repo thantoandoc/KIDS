@@ -84,8 +84,8 @@ router.post('/:id/sua-cate.html', checkAdmin, function(req, res, next) {
 });
 
 router.get('/:id/xoa-cate.html', checkAdmin, function(req, res, next) {
-
-    Cate.findById(req.params.id).remove(function() {
+    const id = req.params.id;
+    Cate.findById(id).remove(function() {
         req.flash('success_msg', 'Đã Xoá Thành Công');
         res.redirect('/admin/cate/danh-sach.html');
     });

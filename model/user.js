@@ -4,32 +4,34 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 var mongoDBConfig = require('../config/mongoDB');
-mongoose.connect(mongoDBConfig.getURLDatabase(), { useNewUrlParser: true }, function(err) {
-    if (err) {
-        console.log('Some problem with the connection ' + err);
-    } else {
-        console.log('The Mongoose connection is ready');
-    }
-});
 
 //UserSchema
 
 var userSchema = mongoose.Schema({
     username: {
         type: String,
-        index: true
+        required: true
+
     },
     password: {
-        type: String
+        type: String,
+        required: true
 
     },
     email: {
-        type: String
+        type: String,
+        index: true,
+        required: true
 
     },
     img: {
-        type: String
+        type: String,
+        required: true
 
+    },
+    chanel: {
+        type: String,
+        default: null
     }
 }, { collection: 'user' });
 

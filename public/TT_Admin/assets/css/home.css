@@ -1,0 +1,231 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+header {
+    width: 100%;
+    height: 78px;
+    border-bottom: 2px solid #cec2c2;
+}
+
+.vien {
+    width: 1200px;
+    height: 78px;
+    margin: auto;
+}
+
+.vien .logo {
+    width: 206px;
+    height: 60px;
+    float: left;
+    margin-top: 5px;
+}
+
+.vien .timkiem {
+    width: 600px;
+    height: 61px;
+    float: left;
+    margin-top: 5px;
+    margin-left: 100px;
+}
+
+.vien .timkiem #nut1 {
+    width: 600px;
+    height: 60px;
+    border: 1px solid red;
+    border-radius: 31px;
+}
+
+.vien .timkiem #nut2 span {
+    font-size: 25px;
+    color: #fff;
+    margin-left: 10px
+}
+
+.vien .timkiem #nut2 {
+    width: 200px;
+    height: 60px;
+    background: linear-gradient(to right, orange, red);
+    position: relative;
+    top: -60px;
+    z-index: 3;
+    left: 400px;
+    border: 1px solid red;
+    border-radius: 31px;
+}
+
+.vien .timkiem #nut2 .fa {
+    font-size: 25px;
+    margin-left: -10px;
+    color: #fff;
+}
+
+.vien .congcu .danhmuc {
+    width: 78px;
+    height: 60px;
+    float: left;
+    margin-left: 75px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.vien .congcu .dangnhap {
+    width: 80px;
+    height: 60px;
+    float: left;
+    margin-left: 32px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+section {
+    width: 1200px;
+    margin: auto;
+}
+
+section .row .col-sm-7 {
+    height: 400px;
+    margin-top: -47px;
+}
+
+section .row .col-sm-7 img {
+    height: 376px;
+}
+
+section .row .col-sm-5 {
+    height: 400px;
+    margin-top: -47px;
+    margin-left: -15px;
+}
+
+section .row .col-sm-5 .col-1 {
+    height: 175px;
+    margin-bottom: 10px;
+}
+
+section .row .col-sm-5 .col-2 {
+    height: 190px;
+    margin-top: 20px;
+}
+
+section .brand #line {
+    width: 1144px;
+    height: 2px;
+    background: #ef5315;
+    position: relative;
+    top: -2px;
+    left: 39px;
+}
+
+section .col-sm-3 {
+    margin-top: 20px;
+    margin-left: -4px;
+}
+
+section .col-sm-3 #content {
+    font-size: 25px;
+    margin-top: 7px;
+}
+
+section .col-sm-3 #chuthich {
+    font-size: 12px;
+}
+
+section .col-sm-3 #chuthich i {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 10px;
+    color: gray;
+}
+
+section .viewmore {
+    width: 200px;
+    height: 50px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 527px;
+    margin-bottom: 30px;
+}
+
+section .viewmore p {
+    font-size: 20px;
+    margin-top: 10px;
+    color: gray;
+    cursor: pointer;
+}
+
+footer {
+    width: 100%;
+    height: 300px;
+    background: #f1f1f1;
+    border-top: 2px solid gray;
+}
+
+footer .chantrang {
+    width: 1200px;
+    height: 300px;
+    margin: auto;
+}
+
+footer .chantrang .col-sm-3 {
+    background-color: #f1f1f1;
+    margin-top: 50px;
+}
+
+footer .chantrang .col-sm-5 {
+    margin-top: 46px;
+    font-size: 20px;
+}
+
+footer .chantrang .col-sm-4 {
+    margin-top: 46px;
+    font-size: 20px;
+    padding-left: 75px;
+}
+
+footer .cuoitrang {
+    height: 120px;
+    background: linear-gradient(to right, orange, red);
+}
+
+footer .cuoitrang #content {
+    width: 1200px;
+    height: 100px;
+    margin: auto;
+}
+
+footer .cuoitrang #content .tg {
+    width: 300px;
+    margin-left: 20px;
+    font-size: 16px;
+    color: #fff;
+    padding-top: 26px;
+}
+
+footer .cuoitrang #content .ds {
+    width: 310px;
+    float: right;
+    height: 100px;
+    margin-top: -50px;
+}
+
+footer .cuoitrang #content .ds ul {
+    list-style: none;
+}
+
+footer .cuoitrang #content .ds ul li {
+    display: inline-block;
+    float: left;
+    width: 59px;
+    height: 50px;
+    line-height: 77px;
+}
+
+footer .cuoitrang #content .ds ul li a i {
+    color: #fff;
+    font-size: 36px;
+}

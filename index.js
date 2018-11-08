@@ -1,32 +1,34 @@
-var express = require('express');
-var path = require('path');
+const express = require('express');
+const path = require('path');
+const session = require('client-sessions');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+// const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const expressValidator = require('express-validator');
+const multer = require('multer');
+const upload = multer({ dest: './uploads' });
+const flash = require('connect-flash');
+const bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
+const mongoDBConfig = require('./config/mongoDB');
+const User = require('./model/user');
 
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var expressValidator = require('express-validator');
-var multer = require('multer');
-var upload = multer({ dest: './uploads' });
-var flash = require('connect-flash');
-var bcrypt = require('bcryptjs');
-var mongoose = require('mongoose');
-var mongoDBConfig = require('./config/mongoDB');
-
-var PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 /**
  * include router
  */
-var index = require('./routes/index');
-var admin = require('./routes/admin/admin');
-var users = require('./routes/admin/users');
-var cate = require('./routes/admin/cates');
+const index = require('./routes/index');
+const admin = require('./routes/admin/admin');
+const users = require('./routes/admin/users');
+const cate = require('./routes/admin/cates');
+const userPage = require('./routes/page/user');
 const videoRouter = require('./routes/admin/video');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -44,10 +46,39 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+// app.use(session({ secret: "daiphong", resave: false, saveUninitialized: true }));
+app.use(session({
+    cookieName: 'session',
+    secret: 'eg[isfd-8yF9-7w2315df{}+Ijsli;;to8',
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
+    httpOnly: true,
+    secure: true,
+    ephemeral: true
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/anhsanpham', express.static('anhsanpham'));
 //app.use(session({ secret: 'chauminhthien', resave: true, saveUninitialized: true }))
 
+
+
+
+app.use(function(req, res, next) {
+    if (req.session && req.session.user) {
+        User.findOne({ email: req.session.user.email }, function(err, user) {
+            if (user) {
+                req.user = user;
+                delete req.user.password; // delete the password from the session
+                req.session.user = user; //refresh the session value
+                res.locals.user = user;
+            }
+            // finishing processing the middleware and run the route
+            next();
+        });
+    } else {
+        next();
+    }
+});
 
 app.use(expressValidator({
     errorFormatter: function(param, msg, value) {
@@ -65,13 +96,12 @@ app.use(expressValidator({
         };
     }
 }));
-
-app.use(session({
-    secret: 'secret',
-    resave: true,
-    key: 'user',
-    saveUninitialized: true
-}));
+// app.use(session({
+//     secret: 'secret',
+//     resave: true,
+//     key: 'user',
+//     saveUninitialized: true
+// }));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -93,6 +123,7 @@ app.use('/users', users);
 app.use('/admin', admin);
 app.use('/admin/cate', cate);
 app.use('/admin/video', videoRouter);
+app.use('/page/user', userPage);
 
 
 // catch 404 and forward to error handler
@@ -115,4 +146,4 @@ app.use(function(err, req, res, next) {
 
 app.listen(PORT, function() {
     console.log(`App listening on PORT: ${PORT}`);
-})
+});
