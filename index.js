@@ -1,10 +1,10 @@
 const express = require('express');
 const path = require('path');
-const session = require('client-sessions');
+// const session = require('client-sessions');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-// const session = require('express-session');
+const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const expressValidator = require('express-validator');
@@ -46,39 +46,39 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(session({ secret: "daiphong", resave: false, saveUninitialized: true }));
-app.use(session({
-    cookieName: 'session',
-    secret: 'eg[isfd-8yF9-7w2315df{}+Ijsli;;to8',
-    duration: 30 * 60 * 1000,
-    activeDuration: 5 * 60 * 1000,
-    httpOnly: true,
-    secure: true,
-    ephemeral: true
-}));
+app.use(session({ secret: "daiphong", resave: false, saveUninitialized: true }));
+// app.use(session({
+//     cookieName: 'session',
+//     secret: 'eg[isfd-8yF9-7w2315df{}+Ijsli;;to8',
+//     duration: 30 * 60 * 1000,
+//     activeDuration: 5 * 60 * 1000,
+//     httpOnly: true,
+//     secure: true,
+//     ephemeral: true
+// }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/anhsanpham', express.static('anhsanpham'));
-//app.use(session({ secret: 'chauminhthien', resave: true, saveUninitialized: true }))
 
 
 
 
-app.use(function(req, res, next) {
-    if (req.session && req.session.user) {
-        User.findOne({ email: req.session.user.email }, function(err, user) {
-            if (user) {
-                req.user = user;
-                delete req.user.password; // delete the password from the session
-                req.session.user = user; //refresh the session value
-                res.locals.user = user;
-            }
-            // finishing processing the middleware and run the route
-            next();
-        });
-    } else {
-        next();
-    }
-});
+
+// app.use(function(req, res, next) {
+//     if (req.session && req.session.user) {
+//         User.findOne({ email: req.session.user.email }, function(err, user) {
+//             if (user) {
+//                 req.user = user;
+//                 delete req.user.password; // delete the password from the session
+//                 req.session.user = user; //refresh the session value
+//                 res.locals.user = user;
+//             }
+//             // finishing processing the middleware and run the route
+//             next();
+//         });
+//     } else {
+//         next();
+//     }
+// });
 
 app.use(expressValidator({
     errorFormatter: function(param, msg, value) {
@@ -147,3 +147,5 @@ app.use(function(err, req, res, next) {
 app.listen(PORT, function() {
     console.log(`App listening on PORT: ${PORT}`);
 });
+
+module.exports = app;

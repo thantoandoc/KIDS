@@ -17,6 +17,7 @@ router.get('/', (req, res) => res.render('page/home', { errors: null }));
 
 router.post('/login', (req, res) => {
     User.findOne({ email: req.body.email }, (errors, user) => {
+        if (errors) throw errors;
         if (!user) {
             res.render('page/login', { errors: 'Invalid email or password' });
         } else {

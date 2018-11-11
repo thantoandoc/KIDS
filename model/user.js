@@ -39,8 +39,13 @@ var userSchema = mongoose.Schema({
     chanel: {
         type: String,
         default: null
+    },
+    cout: {
+        type: Number,
+        default: 0
     }
-}, { collection: 'user' });
+
+}, { autoIndex: false });
 
 
 var user = module.exports = mongoose.model('user', userSchema);

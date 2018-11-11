@@ -34,7 +34,7 @@ var userSchema = mongoose.Schema({
         type: String
 
     }
-}, { collection: 'admin' });
+}, { autoIndex: false });
 
 
 var user = module.exports = mongoose.model('admin', userSchema);
