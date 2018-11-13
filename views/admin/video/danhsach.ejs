@@ -46,17 +46,22 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
+                                        <% data.forEach((item)=>{ %>
                                         <tr>
-                                            <td>1</td>
-                                            <td><img src="/img/addcart.png" alt="" srcset="" style="height: 128px; width: 128px;"></td>
-                                            <td>Name</td>
-                                            <td>Chào Mừng Các Bạn Đến Với Kênh Ẩm Thực Tam Mao . Kênh Chuyên Về Ẩm Thực Của 2 Anh Em Tam Mao Với Những Món Ăn Tưởng Chừng Chưa Từng Có Chưa Từng Xuất hiện . Các Bạn Nghĩ Được Món Ăn Gì Thì Nhớ Góp Ý Cho Anh Em Tam Mao Nha</td>
-                                            <td>3-11-2018</td>
+                                            <td><%= item._id%></td>
+                                            <td><video width="256px" height="256px" controls>
+                                                <source src="<%= item.videoURL%>"  type="video/mp4">
+                                            </video></td>
+                                            <td><%= item.nameVideo%></td>
+                                            <td><%= item.description%></td>
+                                            <td><%= item.timePost%></td>
                                             <td>
                                                 <a href="/admin/video/xoa-cate.html"><i class="fa fa-trash "></i>Del</a>
                                             </td>
                                         </tr>
+                                        <% }) %>
                                     </tbody>
                                 </table>
 
