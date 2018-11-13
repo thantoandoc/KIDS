@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../../model/google');
+const User = require('../../model/facebook');
 const passport = require('passport');
 
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const keys = require('../../key/key');
+var FacebookStrategy = require('passport-facebook').Strategy;
+const keys = require('../../key/fb');
 router.get('/', (req, res) => {
     res.render('page/home');
 });
@@ -17,13 +17,13 @@ passport.deserializeUser(function(user, done) {
 });
 
 
-passport.use(new GoogleStrategy({
-        clientID: keys.googleClientID,
-        clientSecret: keys.googleClientSecret,
-        callbackURL: "/logingoogle/auth/google/callback"
+passport.use(new FacebookStrategy({
+        clientID: keys.facebookClientID,
+        clientSecret: keys.facebookClientSecret,
+        callbackURL: "/loginfacebook/auth/google/callback"
     },
     function(accessToken, refreshToken, profile, cb) {
-        User.findOne({ googleId: profile.id }, function(err, user) {
+        User.findOne({ facebookId: profile.id }, function(err, user) {
             if (err) {
                 return cb(err, false, { message: err });
             };
@@ -32,7 +32,7 @@ passport.use(new GoogleStrategy({
             } else {
                 // var username = profile.displayName.split(' ');
                 var userData = new User();
-                userData.googleId = profile.id;
+                userData.facebookId = profile.id;
                 userData.token = accessToken;
                 userData.name = profile.displayName;
                 userData.email = profile.emails[0].value;
@@ -54,12 +54,12 @@ passport.use(new GoogleStrategy({
     }
 ));
 
-router.get('/auth/google', passport.authenticate('google', {
+router.get('/auth/facebook', passport.authenticate('facebook', {
     scope: ['profile', 'email']
 }));
-router.get('/auth/google/callback', passport.authenticate('google', {
-    successRedirect: '/logingoogle',
-    failureRedirect: '/logingoogle/login'
+router.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    successRedirect: '/loginfacebook',
+    failureRedirect: '/loginfacebook/login'
 }));
 
 router.get('/login', (req, res) => {

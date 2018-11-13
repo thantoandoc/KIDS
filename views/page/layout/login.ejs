@@ -1,0 +1,29 @@
+<form action="userpage/login" method="post">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div>
+                    <h4 class="modal-title" id="dn">Đăng nhập</h4>
+                </div>
+                <div>
+                    <input id="taikhoan" type="text" name="taikhoan" id="taikhoan" class="form-control" placeholder="Tài khoản">
+                    <input id="matkhau" type="password" name="password" id="password" class="form-control" placeholder="Mật khẩu">
+                </div>
+                <div>
+                    <button type="button" class="btn btn-default form-control nut" data-dismiss="modal" id="txtlg">Đăng nhập</button>
+                    <p id="qmk"><a href="#">Bạn quên mật khẩu?</a></p>
+                    <p id="dangkytk" data-toggle="modal" data-target="#myModal1" data-dismiss="modal" f>Đăng ký</p>
+                </div>
+                <div>
+                    <div class="vientrai" id="txtText"></div>
+                    <div class="giua" id="txth">Hoặc</div>
+                    <div class="vienphai" id="txtv"></div>
+                </div>
+                <div id="fb"><a href="logingoogle/auth/google"><i class="fa fa-google"></i></a></div>
+                <div id="gg"><a href="loginfacebook/auth/facebook" class="facebook"><i class="fa fa-facebook"></i></a></div>
+            </div>
+        </div>
+    </div>
+</form>

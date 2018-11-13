@@ -429,10 +429,35 @@ footer .cuoitrang #content .ds ul li a i {
     font-weight: bold;
 }
 
+#imageUser {
+    width: 225px;
+    margin-left: 85px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.chonanh {
+    margin-left: 85px;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid #e5dcdc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 #taikhoan {
     width: 225px;
     margin-left: 85px;
     margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+#email {
+    width: 225px;
+    margin-left: 85px;
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 
@@ -470,7 +495,7 @@ footer .cuoitrang #content .ds ul li a i {
     font-size: 16px;
     cursor: pointer;
     text-decoration: underline;
-    color: blue;
+    color: orange;
 }
 
 .vientrai {

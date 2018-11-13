@@ -165,37 +165,10 @@
 
 
     <% include ./layout/footer %>
-        <form action="userpage/login" method="post">
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
+        <% include ./layout/login %>
+            <% include ./layout/register %>
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div>
-                            <h4 class="modal-title" id="dn">Đăng nhập</h4>
-                        </div>
-                        <div>
-                            <input id="taikhoan" type="text" name="username" id="taikhoan" class="form-control" placeholder="Tài khoản">
-                            <input id="matkhau" type="password" name="password" id="password" class="form-control" placeholder="Mật khẩu">
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-default form-control nut" data-dismiss="modal" id="txtlg" onclick="changeContentModalLogin()">Đăng nhập</button>
-                            <p id="qmk"><a href="#">Bạn quên mật khẩu?</a></p>
-                            <p id="dangkytk" onclick="changeContentModalRegister()">Đăng ký</p>
-                        </div>
-                        <div>
-                            <div class="vientrai" id="txtText"></div>
-                            <div class="giua" id="txth">Hoặc</div>
-                            <div class="vienphai" id="txtv"></div>
-                        </div>
-                        <div id="fb"><a href="/logingoogle/auth/google"><i class="fa fa-google"></i></a></div>
-                        <div id="gg"><a href="/logingoogle/auth/google" class="facebook"><i class="fa fa-facebook"></i></a></div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <!--End-->
-        </body>
-        <script type="text/javascript" src="homepage/js/change.js"></script>
+                </body>
+                <script type="text/javascript" src="homepage/js/change.js"></script>
 
-        </html>
+                </html>

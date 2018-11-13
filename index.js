@@ -29,6 +29,7 @@ const userPage = require('./routes/page/user');
 const home = require('./routes/page/home');
 const videoRouter = require('./routes/admin/video');
 const google = require('./routes/page/loginGoogle');
+const facebook = require('./routes/page/loginFacebook');
 
 const app = express();
 
@@ -126,6 +127,8 @@ app.use('/admin/cate', cate);
 app.use('/admin/video', videoRouter);
 app.use('/userpage', userPage);
 app.use('/logingoogle', google);
+app.use('/loginfacebook', facebook);
+
 
 
 // catch 404 and forward to error handler

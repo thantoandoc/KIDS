@@ -23,7 +23,7 @@ router.post('/login', (req, res) => {
         } else {
             if (req.body.password === user.password) {
                 req.session.user = user;
-                res.redirect('page/user/');
+                res.redirect('/userpage/user/');
             } else {
                 res.render('page/login', { errors: 'Invalid email or password' });
             }

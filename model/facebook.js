@@ -36,4 +36,4 @@ userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
 }
 
-module.exports = mongoose.model('googles', userSchema);
+module.exports = mongoose.model('facebooks', userSchema);
