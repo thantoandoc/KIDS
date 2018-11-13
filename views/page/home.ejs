@@ -17,6 +17,7 @@
                     <i data-toggle="modal" data-target="#myModal" class="fas fa-power-off"></i>
                     <label>Đăng nhập</label>
                 </div>
+
             </div>
         </div>
     </header>
@@ -164,7 +165,7 @@
 
 
     <% include ./layout/footer %>
-        <form action="#" method="post">
+        <form action="userpage/login" method="post">
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
 
@@ -174,7 +175,7 @@
                             <h4 class="modal-title" id="dn">Đăng nhập</h4>
                         </div>
                         <div>
-                            <input id="taikhoan" type="text" name="taikhoan" id="taikhoan" class="form-control" placeholder="Tài khoản">
+                            <input id="taikhoan" type="text" name="username" id="taikhoan" class="form-control" placeholder="Tài khoản">
                             <input id="matkhau" type="password" name="password" id="password" class="form-control" placeholder="Mật khẩu">
                         </div>
                         <div>
@@ -187,14 +188,14 @@
                             <div class="giua" id="txth">Hoặc</div>
                             <div class="vienphai" id="txtv"></div>
                         </div>
-                        <div id="fb"><a href="#"><i class="fa fa-google"></i></a></div>
-                        <div id="gg"><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></div>
+                        <div id="fb"><a href="/logingoogle/auth/google"><i class="fa fa-google"></i></a></div>
+                        <div id="gg"><a href="/logingoogle/auth/google" class="facebook"><i class="fa fa-facebook"></i></a></div>
                     </div>
                 </div>
             </div>
         </form>
         <!--End-->
         </body>
-        <script type="text/javascript" src="public/homepage/js/change.js"></script>
+        <script type="text/javascript" src="homepage/js/change.js"></script>
 
         </html>
