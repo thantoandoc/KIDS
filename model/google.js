@@ -11,10 +11,10 @@ mongoose.connect(mongoDBConfig.getURLDatabase(), { useNewUrlParser: true }, func
         console.log('The Mongoose connection is ready');
     }
 });
-
+//googleId dau? day la id .. cha
 var userSchema = mongoose.Schema({
 
-    id: String,
+    googleId: String,
     token: String,
     email: String,
     name: String,

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Cate = require('../../model/Cate.js');
+const Cate = require('../../model/cate');
 
 function bodauTiengViet(str) {
     str = str.toLowerCase();
