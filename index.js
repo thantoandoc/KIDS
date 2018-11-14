@@ -16,6 +16,7 @@ const mongoose = require('mongoose');
 const mongoDBConfig = require('./config/mongoDB');
 const User = require('./model/user');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const PORT = process.env.PORT || 3000;
 
 /**

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 var passport = require('passport');
 var bcrypt = require('bcryptjs');
+var chuyenobjectid = require('mongodb').ObjectID;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 var mongoDBConfig = require('../config/mongoDB');
 mongoose.connect(mongoDBConfig.getURLDatabase(), { useNewUrlParser: true }, function(err) {

@@ -35,7 +35,7 @@ router.post('/login', passport.authenticate('local', {
     failureRedirect: '/admin/login',
     failureFlash: true
 }), (req, res, next) => {
-    req.flash('You are now logged in');
+    req.flash('success', 'You are now logged in');
     req.redirect('users')
 });
 passport.serializeUser(function(user, done) {
