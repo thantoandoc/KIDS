@@ -20,13 +20,16 @@ const multer = Multer({
 });
 
 
-router.route('/danh-sach.html').get(function (req, res) {
-    res.render(rootRender + 'danhsach', { title: "Hello" });
-});
-
 router.route('/').get(function (req, res) {
     res.redirect(rootPath + 'danh-sach.html');
 });
+
+router.route('/danh-sach.html').get(function (req, res) {
+    videoModel.videoModel.find({}).then((data)=>{
+        res.render(rootRender + 'danhsach', { data: data });
+    });
+});
+
 router.route('/films.html').get(function (req, res) {
     res.render(rootRender + 'danhsach', { title: "Hello" });
 });
